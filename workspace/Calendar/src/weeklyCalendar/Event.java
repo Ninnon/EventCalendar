@@ -1,18 +1,22 @@
 package weeklyCalendar;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Event {
 	Day eventDay;
 	String eventTitle;
-	Date startTime;
+	LocalTime startTime;
 	String description;
+	long duration;
 	
 	
-	public Event(String eventTitle, Date startTime, String description) {
+	public Event(String eventTitle, Day eventDay, LocalTime startTime, String description, long duration) {
 		this.eventTitle = eventTitle;
+		this.eventDay = eventDay;
 		this.startTime = startTime;
 		this.description = description;
+		this.duration = duration;
 	}
 
 	public Day getEventDay() {
@@ -20,24 +24,27 @@ public class Event {
 	public String getEventTitle() {
 		return eventTitle;
 	}
-	public Date getStartTime() {
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 	public String getDescription() {
 		return description;
 	}
+    public long getDuration() {
+        return duration;
+    }
 
-	public void setEventDay(Day eventDay) { this.eventDay = eventDay; }
+    public void setEventDay(Day eventDay) { this.eventDay = eventDay; }
 	public void setEventTitle(String eventTitle) {
 		this.eventTitle = eventTitle;
 	}
-	public void setStartTime(Date startTime) {
+	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }
