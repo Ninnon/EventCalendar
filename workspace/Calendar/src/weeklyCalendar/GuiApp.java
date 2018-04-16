@@ -36,7 +36,7 @@ public class GuiApp extends JFrame {
 	}
 	
 //	Build GUI
-//	Use event handlers to send items to ListItems.java that a user inputs to add to calendar
+//	Use event handlers to send items to Week.java that a user inputs to add to calendar
 //	Use event handler to display items in array list for each day
 
 }
