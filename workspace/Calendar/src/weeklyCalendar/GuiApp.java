@@ -13,6 +13,13 @@ public class GuiApp extends JFrame {
 
 	
 	public static void main(String[] args) {
+	    Week myWeek = new Week();
+	    myWeek.readFile();
+
+        for (Event event:
+             myWeek.monday) {
+            System.out.println(event);
+        }
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
