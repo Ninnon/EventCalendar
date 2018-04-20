@@ -6,7 +6,8 @@ public enum Day {
     // Switch statement to parse day
     public static Day parseDay(String string) {
         Day day;
-        switch (string) {
+        switch (string.toUpperCase()) {
+        //Did toUpperCase() so a user won't always have to input the date in all caps
             case "SUNDAY":
                 day = SUNDAY;
                 break;
@@ -15,6 +16,7 @@ public enum Day {
                 break;
             case "TUESDAY":
                 day = TUESDAY;
+                break;
             case "WEDNESDAY":
                 day = WEDNESDAY;
                 break;

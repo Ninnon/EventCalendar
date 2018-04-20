@@ -3,6 +3,7 @@ package weeklyCalendar;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,24 +34,31 @@ public class Week {
                     switch (tempEvent.eventDay) {
                         case SUNDAY:
                             sunday.add(tempEvent);
+                            Collections.sort(sunday);
                             break;
                         case MONDAY:
                             monday.add(tempEvent);
+                            Collections.sort(monday);
                             break;
                         case TUESDAY:
                             tuesday.add(tempEvent);
+                            Collections.sort(tuesday);
                             break;
                         case WEDNESDAY:
                             wednesday.add(tempEvent);
+                            Collections.sort(wednesday);
                             break;
                         case THURSDAY:
                             thursday.add(tempEvent);
+                            Collections.sort(thursday);
                             break;
                         case FRIDAY:
                             friday.add(tempEvent);
+                            Collections.sort(friday);
                             break;
                         case SATURDAY:
                             saturday.add(tempEvent);
+                            Collections.sort(saturday);
                             break;
                     }
                 }
