@@ -16,6 +16,7 @@ public enum Day {
                 break;
             case "TUESDAY":
                 day = TUESDAY;
+                break;
             case "WEDNESDAY":
                 day = WEDNESDAY;
                 break;
