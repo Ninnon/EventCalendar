@@ -1,27 +1,26 @@
 package weeklyCalendar;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
-import javax.swing.JTable;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextArea;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalTime;
 
 public class GuiApp extends JFrame {
 
 	private JPanel contentPane;
 	StringBuilder sb = new StringBuilder();
-	Week myWeek = new Week();
+	Week week = new Week();
 	 
 
 	
@@ -43,7 +42,7 @@ public class GuiApp extends JFrame {
 	public GuiApp() {
 		
 		 
-		myWeek.readFile();
+		week.readFile();
 	       
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(60, 50, 1400, 700);
@@ -186,11 +185,20 @@ public class GuiApp extends JFrame {
 		gbc_btnAddNewItem.gridx = 3;
 		gbc_btnAddNewItem.gridy = 2;
 		contentPane.add(btnAddNewItem, gbc_btnAddNewItem);
+
+		btnAddNewItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // For now this is just here to test the file reader. Whoever implements this can delete the next two lines
+                week.sunday.add(new Event("test", Day.MONDAY, LocalTime.of(10,10,10,10), "test", 20));
+                week.writeFile();
+            }
+        });
 	}
 
 	private String getSunday() {
 		for (Event event:
-            myWeek.sunday) {
+            week.sunday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();
@@ -200,7 +208,7 @@ public class GuiApp extends JFrame {
 
 	private String getMonday() {
 		 for (Event event:
-            myWeek.monday) {
+            week.monday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();
@@ -208,7 +216,7 @@ public class GuiApp extends JFrame {
 	
 	private String getTuesday() {
 		for (Event event:
-            myWeek.tuesday) {
+            week.tuesday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();
@@ -217,7 +225,7 @@ public class GuiApp extends JFrame {
 	
 	private String getWednesday() {
 		for (Event event:
-            myWeek.wednesday) {
+            week.wednesday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();
@@ -225,7 +233,7 @@ public class GuiApp extends JFrame {
 	
 	private String getThursday() {
 		for (Event event:
-            myWeek.thursday) {
+            week.thursday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();
@@ -234,7 +242,7 @@ public class GuiApp extends JFrame {
 
 	private String getFriday() {
 		for (Event event:
-            myWeek.friday) {
+            week.friday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();
@@ -242,7 +250,7 @@ public class GuiApp extends JFrame {
 
 	private String getSaturday() {
 		for (Event event:
-            myWeek.saturday) {
+            week.saturday) {
            sb.append(event + "\n");
        }
 		 return sb.toString();

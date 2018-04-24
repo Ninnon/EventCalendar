@@ -48,19 +48,14 @@ public class Event implements Comparable <Event>{
         this.duration = duration;
     }
 
+    // Used to format string to be written to csv file
+    public String toFileLine() {
+	    return String.format("%s,%s,%s,%s,%d", eventTitle, eventDay, startTime.toString(), description, duration);
+    }
+
     @Override
     public String toString() {
-//        return "Event{" +
-//                "eventDay=" + eventDay +
-//                ", eventTitle='" + eventTitle + '\'' +
-//                ", startTime=" + startTime +
-//                ", description='" + description + '\'' +
-//                ", duration=" + duration +
-//                '}';
-    	
     	return " " + startTime + ":   " + eventTitle;
-    	// Should we narrow it down to just startTime and eventTitle? It would be cleaner and be a simple calendar.
-    	// If we want to kep the other things as well, I am totally fine with that too.
     }
 
 	@Override
