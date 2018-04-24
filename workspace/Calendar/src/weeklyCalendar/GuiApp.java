@@ -6,15 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.TextArea;
+
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalTime;
+import java.util.Collections;
 
 public class GuiApp extends JFrame {
 
@@ -108,7 +114,8 @@ public class GuiApp extends JFrame {
 		contentPane.add(lblSaturday, gbc_lblSaturday);
 		
 		JTextArea sunText = new JTextArea(getSunday());
-		sunText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		sunText.setLineWrap(true);
+		sunText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_sunText = new GridBagConstraints();
 		gbc_sunText.insets = new Insets(0, 0, 5, 5);
 		gbc_sunText.fill = GridBagConstraints.BOTH;
@@ -118,7 +125,8 @@ public class GuiApp extends JFrame {
 		sb.setLength(0);
 		
 		JTextArea monText = new JTextArea(getMonday());
-		monText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		monText.setLineWrap(true);
+		monText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_monText = new GridBagConstraints();
 		gbc_monText.insets = new Insets(0, 0, 5, 5);
 		gbc_monText.fill = GridBagConstraints.BOTH;
@@ -128,7 +136,8 @@ public class GuiApp extends JFrame {
 		sb.setLength(0);
 		
 		JTextArea tueText = new JTextArea(getTuesday());
-		tueText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		tueText.setLineWrap(true);
+		tueText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_tueText = new GridBagConstraints();
 		gbc_tueText.insets = new Insets(0, 0, 5, 5);
 		gbc_tueText.fill = GridBagConstraints.BOTH;
@@ -138,7 +147,8 @@ public class GuiApp extends JFrame {
 		sb.setLength(0);
 		
 		JTextArea wedText = new JTextArea(getWednesday());
-		wedText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		wedText.setLineWrap(true);
+		wedText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_wedText = new GridBagConstraints();
 		gbc_wedText.insets = new Insets(0, 0, 5, 5);
 		gbc_wedText.fill = GridBagConstraints.BOTH;
@@ -148,7 +158,8 @@ public class GuiApp extends JFrame {
 		sb.setLength(0);
 		
 		JTextArea thuText = new JTextArea(getThursday());
-		thuText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		thuText.setLineWrap(true);
+		thuText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_thuText = new GridBagConstraints();
 		gbc_thuText.insets = new Insets(0, 0, 5, 5);
 		gbc_thuText.fill = GridBagConstraints.BOTH;
@@ -159,7 +170,8 @@ public class GuiApp extends JFrame {
 		
 		
 		JTextArea friText = new JTextArea(getFriday());
-		friText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		friText.setLineWrap(true);
+		friText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_friText = new GridBagConstraints();
 		gbc_friText.insets = new Insets(0, 0, 5, 5);
 		gbc_friText.fill = GridBagConstraints.BOTH;
@@ -169,7 +181,8 @@ public class GuiApp extends JFrame {
 		sb.setLength(0);
 		
 		JTextArea satText = new JTextArea(getSaturday());
-		satText.setFont(new Font("Monospaced", Font.BOLD, 20));
+		satText.setLineWrap(true);
+		satText.setFont(new Font("Monospaced", Font.BOLD, 12));
 		GridBagConstraints gbc_satText = new GridBagConstraints();
 		gbc_satText.insets = new Insets(0, 0, 5, 0);
 		gbc_satText.fill = GridBagConstraints.BOTH;
@@ -189,9 +202,54 @@ public class GuiApp extends JFrame {
 		btnAddNewItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // For now this is just here to test the file reader. Whoever implements this can delete the next two lines
-                week.sunday.add(new Event("test", Day.MONDAY, LocalTime.of(10,10,10,10), "test", 20));
-                week.writeFile();
+               
+            	
+            	JTextField titleField = new JTextField();
+                JTextField dayField = new JTextField();
+                JTextField timeField = new JTextField();
+
+                JPanel myPanel = new JPanel();
+                myPanel.add(new JLabel("Event:  "));
+                myPanel.add(titleField);
+                myPanel.add(new JLabel("Day:  "));
+                myPanel.add(dayField);
+                myPanel.add(new JLabel("Time:  "));
+                myPanel.add(timeField);
+
+                String title = JOptionPane.showInputDialog(null,"Enter an event: ");
+                String day = JOptionPane.showInputDialog(null,"Enter a day: ").toUpperCase();
+                String time = JOptionPane.showInputDialog(null,"Enter a time: ");
+                
+                switch (day) {
+                case "SUNDAY":
+                	week.sunday.add(new Event(title, Day.SUNDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+                case "MONDAY":
+                	week.monday.add(new Event(title, Day.MONDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+                case "TUESDAY":
+                	week.tuesday.add(new Event(title, Day.TUESDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+                case "WEDNESDAY":
+                	week.wednesday.add(new Event(title, Day.WEDNESDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+                case "THURSDAY":
+                	week.thursday.add(new Event(title, Day.THURSDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+                case "FRIDAY":
+                	week.friday.add(new Event(title, Day.FRIDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+                case "SATURDAY":
+                	week.saturday.add(new Event(title, Day.SATURDAY, LocalTime.parse(time)));
+                    week.writeFile();
+                    break;
+            }
             }
         });
 	}
