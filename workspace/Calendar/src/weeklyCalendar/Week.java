@@ -89,17 +89,14 @@ public class Week {
     // Write the file
     public void writeFile() {
         try {
-            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("week.csv", true)));
+            PrintWriter out = new PrintWriter(new FileOutputStream("src//weeklyCalendar//week.csv", false));
 
             // Need to clear out file first, then write the contents of all lists back to the file
-            out.close();
+            //            out.close();
 
             // Now add everything from the lists back to the file, including new things the user added
             for (Event e : sunday) {
-                out.println(e.toFileLine());
-            }
-            for (Event e : monday) {
-                out.println(e.toFileLine());
+            	out.println(e.toFileLine());
             }
             for (Event e : monday) {
                 out.println(e.toFileLine());

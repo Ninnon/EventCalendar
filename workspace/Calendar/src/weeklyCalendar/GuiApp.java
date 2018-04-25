@@ -15,6 +15,7 @@ import java.awt.TextArea;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -28,8 +29,6 @@ public class GuiApp extends JFrame {
 	StringBuilder sb = new StringBuilder();
 	Week week = new Week();
 	 
-
-	
 	public static void main(String[] args) {
 	    
 		EventQueue.invokeLater(new Runnable() {
@@ -250,6 +249,12 @@ public class GuiApp extends JFrame {
                     week.writeFile();
                     break;
             }
+                
+              
+              
+              
+              
+                
             }
         });
 	}
